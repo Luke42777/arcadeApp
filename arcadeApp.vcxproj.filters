@@ -16,12 +16,18 @@
     <Filter Include="src\Utils">
       <UniqueIdentifier>{924e699d-1446-4c15-b0e7-3e4b5b58603f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Graphics">
+      <UniqueIdentifier>{0817fabf-2abe-4d0b-ba3e-709f903efdf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -34,6 +40,9 @@
     </ClCompile>
     <ClCompile Include="Vec2D.cpp">
       <Filter>src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>src\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
