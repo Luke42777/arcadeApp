@@ -2,24 +2,13 @@
 
 #include "SDL.h"
 #include "Color.h"
+#include "ScreenBuffer.h"
 
 using namespace std;
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
 
-size_t GetIndex(SDL_Surface* noptrWindowSurface, int row, int column) {
-	return row * noptrWindowSurface->w + column;
-}
-void SetPixel(SDL_Surface* noptrWindowSurface, Color color, int x, int y) {
-	SDL_LockSurface(noptrWindowSurface);
-
-	uint32_t * pixels = (uint32_t*)noptrWindowSurface->pixels;
-	size_t index = GetIndex(noptrWindowSurface, y, x);
-	pixels[index] = color.GetPixelColor();
-
-	SDL_UnlockSurface(noptrWindowSurface);
-}
 
 int main(int argc, char* argv[]) {
 
@@ -33,17 +22,17 @@ int main(int argc, char* argv[]) {
 		cout << "Couldn't create window. Got error: " << SDL_GetError() << endl;
 	}
 
-	SDL_Surface* noptrSurface = SDL_GetWindowSurface(optrWindow);
+	SDL_Surface * noptrSurface = SDL_GetWindowSurface(optrWindow);
 
-	
-	
 	SDL_PixelFormat* pixelFormat = noptrSurface->format;
 	
 	Color::InitColorFormat(pixelFormat);
-	
 
-	cout << SDL_GetPixelFormatName(pixelFormat->format);
-	SetPixel(noptrSurface, Color::Blue(), SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	ScreenBuffer screenBuffer;
+	screenBuffer.Init(pixelFormat->format, noptrSurface->w, noptrSurface->h);
+	screenBuffer.SetPixel(Color::Blue(), SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	SDL_BlitSurface(screenBuffer.GetSurface(), nullptr, noptrSurface, nullptr);
+
 	SDL_UpdateWindowSurface(optrWindow);
 
 	SDL_Event sdlEvent;
