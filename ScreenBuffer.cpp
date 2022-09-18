@@ -5,8 +5,10 @@
 
 
 ScreenBuffer::ScreenBuffer(const ScreenBuffer& other) {
-	mSurface = SDL_CreateRGBSurfaceWithFormat(0, other.mSurface->w, other.mSurface->h, 0, other.mSurface->format->format);
-	SDL_BlitSurface(other.mSurface, nullptr,mSurface, nullptr);//copy all of the pixels from other to *this
+	if (other.mSurface != nullptr) {
+		mSurface = SDL_CreateRGBSurfaceWithFormat(0, other.mSurface->w, other.mSurface->h, 0, other.mSurface->format->format);
+		SDL_BlitSurface(other.mSurface, nullptr, mSurface, nullptr);
+	}
 }
 ScreenBuffer::~ScreenBuffer() {
 	if (mSurface) {
@@ -26,8 +28,7 @@ ScreenBuffer& ScreenBuffer::operator=(const ScreenBuffer& other) {
 		mSurface = SDL_CreateRGBSurfaceWithFormat(0, other.mSurface->w, other.mSurface->h, 0, other.mSurface->format->format);
 		SDL_BlitSurface(other.mSurface, nullptr, mSurface, nullptr);//copy all of the pixels from other to *this
 	}
-	return *this;
-	
+	return *this;	
 }
 void ScreenBuffer::Init(uint32_t format, uint32_t width, uint32_t height) {
 	mSurface = SDL_CreateRGBSurfaceWithFormat(0, width, height, 0, format);
