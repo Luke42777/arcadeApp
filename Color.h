@@ -38,6 +38,4 @@ public:
 	uint8_t GetGreen()const;
 	uint8_t GetBlue()const;
 	uint8_t GetAlfa()const;
-
-
 };

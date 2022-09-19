@@ -4,8 +4,8 @@ struct SDL_Surface;
 #include <stdint.h>
 
 class ScreenBuffer {
-	uint32_t GetIndex(int row, int column)const;
 	SDL_Surface* mSurface;
+	uint32_t GetIndex(int row, int column)const;
 public:
 	ScreenBuffer():mSurface(nullptr) {}
 	ScreenBuffer(const ScreenBuffer& other);

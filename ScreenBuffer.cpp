@@ -5,6 +5,7 @@
 
 
 ScreenBuffer::ScreenBuffer(const ScreenBuffer& other) {
+	mSurface = nullptr;// vs complain about uninitialized variable
 	if (other.mSurface != nullptr) {
 		mSurface = SDL_CreateRGBSurfaceWithFormat(0, other.mSurface->w, other.mSurface->h, 0, other.mSurface->format->format);
 		SDL_BlitSurface(other.mSurface, nullptr, mSurface, nullptr);

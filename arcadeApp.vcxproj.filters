@@ -19,6 +19,9 @@
     <Filter Include="src\Graphics">
       <UniqueIdentifier>{0817fabf-2abe-4d0b-ba3e-709f903efdf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Shapes">
+      <UniqueIdentifier>{98a5a039-4c53-48e0-aa25-508c2306ea5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec2D.h">
@@ -34,6 +37,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Line2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,7 +60,10 @@
       <Filter>src\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Screen.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Line2D.cpp">
+      <Filter>src\Shapes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

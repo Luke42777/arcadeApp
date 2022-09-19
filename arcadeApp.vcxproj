@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Line2D.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenBuffer.h" />
     <ClInclude Include="Utils.h" />
@@ -139,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="arcadeApp.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Line2D.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenBuffer.cpp" />
     <ClCompile Include="Utils.cpp" />

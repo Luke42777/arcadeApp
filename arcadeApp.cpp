@@ -8,17 +8,15 @@ using namespace std;
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
-const int MAGNIFICATION = 2;
+const int MAGNIFICATION = 1;
 
 
 int main(int argc, char * argv[]) {
 
 	Screen screen;
 	screen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
-	screen.Draw(SCREEN_WIDTH / 2, SCREEN_WIDTH / 2, Color::Red());
+	screen.Draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, Color::Red());
 	screen.SwapScreen();
-
-
 
 	SDL_Event sdlEvent;
 	bool running = true;
