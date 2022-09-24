@@ -42,6 +42,9 @@
     <ClInclude Include="Line2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Star2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arcadeApp.cpp">
@@ -63,6 +66,9 @@
       <Filter>src\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Line2D.cpp">
+      <Filter>src\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Star2D.cpp">
       <Filter>src\Shapes</Filter>
     </ClCompile>
   </ItemGroup>

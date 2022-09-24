@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include <cassert>
 #include "Line2D.h"
+#include "Star2D.h"
 
 
 Screen::Screen() : mnoptrSurface(nullptr), moptrWindow(nullptr), mWidth(0), mHeight(0) {}
@@ -30,7 +31,7 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag) {
 	mWidth = w;
 	mHeight = h;
 
-	moptrWindow = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWidth * mag, mHeight * mag, 1);
+	moptrWindow = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mWidth * mag, mHeight * mag, 0);
 
 	if (moptrWindow)
 	{
@@ -48,7 +49,7 @@ void Screen::SwapScreen(){
 	assert(moptrWindow);
 	if (moptrWindow) {
 		ClearScreen();
-		SDL_BlitSurface(mBackBuffer.GetSurface(), nullptr, mnoptrSurface, nullptr);
+		SDL_BlitScaled(mBackBuffer.GetSurface(), nullptr, mnoptrSurface, nullptr);
 		SDL_UpdateWindowSurface(moptrWindow);
 		mBackBuffer.Clear(mClearColor);
 	}
@@ -131,3 +132,32 @@ void Screen::Draw(const Line2D& line, const Color& col){
 		}
 	}
 }
+
+void Screen::Draw(const Star2D& star, const Color& col){
+	const Line2D* lines = star.GetLines();
+	for (size_t i = 0; i < 9; i++) {
+		Draw(lines[i], col);
+	}
+}
+
+void Screen::Rotate(Line2D& line, const Color& col,float angle, bool antiClockwise){
+	Vec2D midPoint = line.MidPoint();
+
+		Vec2D p0 = line.GetP0();
+		Vec2D p1 = line.GetP1();
+
+		if (antiClockwise) {
+			angle = -angle;
+			p0.Rotate(angle, midPoint);
+			p1.Rotate(angle, midPoint);
+		}
+		else {
+			p0.Rotate(angle, midPoint);
+			p1.Rotate(angle, midPoint);
+		}
+
+
+		line.SetP0(p0);
+		line.SetP1(p1);
+}
+
