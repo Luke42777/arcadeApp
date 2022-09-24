@@ -10,6 +10,7 @@ class Star2D{
 
 public:
 	const Line2D* GetLines()const;
+	void SetLine(const Vec2D& midPoint, const Vec2D& p1,size_t index);
 	const Vec2D& GetMidPoint()const{return mMidPoint;}
 	Star2D(const Vec2D& midPoint, float branchLength);
 	Star2D() :Star2D(Vec2D::sZero, 0.0f) {}

@@ -1,9 +1,13 @@
 
 #include "Star2D.h"
 
-const Line2D* Star2D::GetLines() const{
+ const Line2D* Star2D::GetLines()const {
 	return mLines;
 }
+
+ void Star2D::SetLine(const Vec2D& midPoint, const Vec2D& p1,size_t index){
+	 mLines[index] = Line2D(midPoint, p1);
+ }
 
 Star2D::Star2D(const Vec2D& midPoint, float branchLength){
 	mMidPoint = midPoint;

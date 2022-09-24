@@ -19,7 +19,7 @@ int main(int argc, char * argv[]) {
 	theScreen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
 	//theScreen.Draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, Color::Red());
 
-	/*  LINE ROTATING
+	/* LINE ROTATING
 	Line2D line(Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vec2D(SCREEN_WIDTH / 2, 100.f));
 	theScreen.Draw(line, Color::Blue());
 	theScreen.SwapScreen();
@@ -29,11 +29,26 @@ int main(int argc, char * argv[]) {
 		theScreen.Rotate(line, Color::Blue(),60.0f,true);
 		theScreen.Draw(line, Color::Blue());
 		theScreen.SwapScreen();
-	}
-	*/
+	}*/
+	
+	/*drawing star
 	Star2D star(Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 20.f);
 	theScreen.Draw(star, Color::Green());
 	theScreen.SwapScreen();
+	*/
+
+	Star2D star(Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 20.f);
+	theScreen.Draw(star, Color::Blue());
+	
+	for (size_t i = 0; i < 20; i++) {
+		SDL_Delay(300);
+		theScreen.SwapScreen();
+		theScreen.Rotate(star, Color::Blue(), 10.0f, true);
+		theScreen.Draw(star, Color::Blue());
+		theScreen.SwapScreen();
+	}
+
+
 	SDL_Event sdlEvent;
 	bool running = true;
 

@@ -43,6 +43,7 @@ public:
 	void Draw(const Line2D& line, const Color& col);
 	void Draw(const Star2D& star, const Color& col);
 	void Rotate(Line2D& line, const Color& col,float angle, bool antiClockwise = false);
+	void Rotate(Star2D& line, const Color& col, float angle, bool antiClockwise = false);
 	
 };
 

@@ -148,16 +148,27 @@ void Screen::Rotate(Line2D& line, const Color& col,float angle, bool antiClockwi
 
 		if (antiClockwise) {
 			angle = -angle;
-			p0.Rotate(angle, midPoint);
-			p1.Rotate(angle, midPoint);
-		}
-		else {
-			p0.Rotate(angle, midPoint);
-			p1.Rotate(angle, midPoint);
 		}
 
+		p0.Rotate(angle, midPoint);
+		p1.Rotate(angle, midPoint);
 
 		line.SetP0(p0);
 		line.SetP1(p1);
+}
+
+void Screen::Rotate(Star2D& star, const Color& col, float angle, bool antiClockwise){
+
+	if (antiClockwise) {
+		angle = -angle;
+	}
+
+	for (size_t i = 0; i < 9; i++) {
+
+		Vec2D p1 = star.GetLines()[i].GetP1();
+		p1.Rotate(angle, star.GetMidPoint());
+		star.SetLine(star.GetMidPoint(), p1, i);
+	}
+
 }
 
